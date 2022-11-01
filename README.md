@@ -1,6 +1,6 @@
-Makers Java accelerator course
+# Makers Java accelerator course
 
-# First program
+## First program
 
 * Make the class
 * Type ```javac Hello.java``` to compile
