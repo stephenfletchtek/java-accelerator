@@ -11,4 +11,9 @@ public class AppTest {
         App classUnderTest = new App();
         assertNotNull("app should have a greeting", classUnderTest.getGreeting());
     }
+
+    @Test public void getPriceLabel() {
+        App classUnderTest = new App();
+        assertEquals("A banana costs 50", String.valueOf("The price for item: banana is 50"), classUnderTest.getPriceLabel("banana", 50));
+    }
 }
