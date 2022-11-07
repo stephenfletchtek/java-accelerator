@@ -1,14 +1,15 @@
 package todo;
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class Todo {
-  List<String> todoList = new ArrayList<String>();
+  ArrayList<String> todoList = new ArrayList<String>();
 
-  public List<String> getTasks() {
+  public ArrayList<String> getTasks() {
     return todoList;
   }
 
+  // Makers made thsi return the task so it could be inspected without calling getTasks()
   public void addTask(String task) {
     todoList.add(task);
   }

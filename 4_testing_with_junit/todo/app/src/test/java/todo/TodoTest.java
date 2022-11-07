@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 import java.util.List;
+import java.util.ArrayList;
 
 public class TodoTest {
   // Initialised with empty list of tasks
@@ -17,6 +18,13 @@ public class TodoTest {
   @Test public void addTask() {
     Todo todo = new Todo();
     todo.addTask("First task");
+
+    // Makers suggested way
+    ArrayList<String> expectedList = new ArrayList<String>();
+    expectedList.add("First task");
+    assertEquals("One task in todo list", expectedList, todo.getTasks());
+    
+    // Another way
     assertEquals("One task in todo list", List.of("First task"), todo.getTasks());
   }
 
