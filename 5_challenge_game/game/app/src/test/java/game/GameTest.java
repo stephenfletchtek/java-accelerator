@@ -7,7 +7,7 @@ import org.junit.Test;
 public class GameTest {
   @Test
   public void testGetWordToGuess() {
-    Game game = new Game();
-    assertEquals(game.getWordToGuess(), "B____");
+    Game game = new Game("MAKERS");
+    assertEquals(game.getWordToGuess(), "M_____");
   }
 }
