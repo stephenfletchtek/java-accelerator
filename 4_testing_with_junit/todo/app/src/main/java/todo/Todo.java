@@ -1,9 +1,15 @@
 package todo;
 
-import java.util.List;
+import java.util.*;
 
 public class Todo {
+  private static List<String> todoList = new ArrayList<String>();
+
   public List<String> getTasks() {
-    return List.of();
+    return todoList;
+  }
+
+  public void addTask(String task) {
+    todoList.add(task);
   }
 }
