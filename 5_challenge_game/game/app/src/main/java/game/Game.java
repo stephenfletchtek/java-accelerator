@@ -1,6 +1,6 @@
 package game;
 
-public class Game {
+public class Game { 
   public String getWordToGuess() {
     return "B____";
   }
