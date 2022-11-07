@@ -9,7 +9,7 @@ public class Todo {
     return todoList;
   }
 
-  // Makers made thsi return the task so it could be inspected without calling getTasks()
+  // Makers made this return the task so it could be inspected without calling getTasks()
   public void addTask(String task) {
     todoList.add(task);
   }
