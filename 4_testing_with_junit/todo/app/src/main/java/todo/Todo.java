@@ -1,7 +1,9 @@
 package todo;
 
+import java.util.List;
+
 public class Todo {
-  public String getTasks() {
-    return "";
+  public List getTasks() {
+    return List.of();
   }
 }
