@@ -15,9 +15,15 @@ public class TodoTest {
   // addTask takes a String and adds it to the list
   @Test public void addTask() {
     Todo todo = new Todo();
-    todo.addTask("Hello");
-    assertEquals("Hello in todo list", List.of("Hello"), todo.getTasks());
+    todo.addTask("First task");
+    assertEquals("One task in todo list", List.of("First task"), todo.getTasks());
   }
 
   // getTasks returns list of tasks
+  @Test public void threeTasks() {
+    Todo todo = new Todo();
+    todo.addTask("second task");
+    todo.addTask("third task");
+    assertEquals("list of three tasks", List.of("First task", "second task", "third task"), todo.getTasks());
+  }
 }
