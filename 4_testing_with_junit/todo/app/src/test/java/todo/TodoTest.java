@@ -8,7 +8,7 @@ public class TodoTest {
   @Test public void instantiate() {
     // Initialised with empty list of tasks
     Todo todo = new Todo();
-    asserEquals("Empty todo list", String.valueOf(""), todo.getTasks());
+    assertEquals("Empty todo list", String.valueOf(""), todo.getTasks());
   }
 
   // addTask takes a String and adds it to the list
