@@ -1,15 +1,14 @@
 package game;
 
-import java.util.List;
-import java.util.Collections;
-import java.util.Arrays;
+import java.util.Random;
 
 public class Game { 
   StringBuilder stringBuilder;
   Integer remainingAttempts;
-  static final String[] DICTIONARY = { "MAKERS", "CANDIES", "DEVELOPER", "LONDON" };
+  static final String[] DICTIONARY = new String [] { "MAKERS", "CANDIES", "DEVELOPER", "LONDON" };
 
-  Game(String word) {
+  Game() {
+    String word = getRandomWordFromDictionary();
     this.stringBuilder = new StringBuilder(word);
     this.remainingAttempts = 10;
   }
@@ -27,6 +26,8 @@ public class Game {
   }
 
   public String getRandomWordFromDictionary() {
+    // Random rand = new Random();
+    // return DICTIONARY[(rand.nextInt(DICTIONARY.length - 1))];
     return DICTIONARY[0];
   }
 }
