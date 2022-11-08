@@ -10,4 +10,10 @@ public class GameTest {
     Game game = new Game("MAKERS");
     assertEquals(game.getWordToGuess(), "M_____");
   }
+
+  @Test
+  public void testGetRemainingAttempts() {
+    Game game = new Game("MAKERS");
+    assertEquals(game.getRemainingAttempts(), 10);
+  }
 }
