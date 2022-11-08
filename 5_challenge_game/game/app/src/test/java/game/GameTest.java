@@ -8,7 +8,7 @@ public class GameTest {
   @Test
   public void testGetWordToGuess() {
     Game game = new Game();
-    assertEquals(game.getWordToGuess(), "M_____");
+    assertEquals(game.getWordToGuess("MAKERS"), "M_____");
   }
 
   @Test

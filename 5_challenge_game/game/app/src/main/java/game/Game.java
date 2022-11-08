@@ -2,14 +2,17 @@ package game;
 
 import java.util.Random;
 
-public class Game { 
-  StringBuilder stringBuilder = new StringBuilder(getRandomWordFromDictionary());
+public class Game {
+  String word;
   Integer remainingAttempts = 10;
   static final String[] DICTIONARY = new String [] { "MAKERS", "CANDIES", "DEVELOPER", "LONDON" };
-
-  public Game() {}
-
-  public String getWordToGuess() {
+ 
+  public Game() {
+    word = getRandomWordFromDictionary();
+  }
+   
+  public String getWordToGuess(String word) {
+    StringBuilder stringBuilder = new StringBuilder(word);
     int max = stringBuilder.length();
     for (int i = 1; i < max; i++) {
       stringBuilder.replace(i, i + 1, "_");
