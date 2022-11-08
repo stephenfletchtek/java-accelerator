@@ -3,26 +3,22 @@ package game;
 import java.util.Random;
 
 public class Game { 
-  StringBuilder stringBuilder;
-  Integer remainingAttempts;
+  StringBuilder stringBuilder = new StringBuilder(getRandomWordFromDictionary());
+  Integer remainingAttempts = 10;
   static final String[] DICTIONARY = new String [] { "MAKERS", "CANDIES", "DEVELOPER", "LONDON" };
 
-  Game() {
-    String word = getRandomWordFromDictionary();
-    this.stringBuilder = new StringBuilder(word);
-    this.remainingAttempts = 10;
-  }
+  public Game() {}
 
   public String getWordToGuess() {
-    int max = this.stringBuilder.length();
+    int max = stringBuilder.length();
     for (int i = 1; i < max; i++) {
-      this.stringBuilder.replace(i, i + 1, "_");
+      stringBuilder.replace(i, i + 1, "_");
     }
-    return this.stringBuilder.toString();
+    return stringBuilder.toString();
   }
 
   public Integer getRemainingAttempts() {
-    return this.remainingAttempts;
+    return remainingAttempts;
   }
 
   public String getRandomWordFromDictionary() {
