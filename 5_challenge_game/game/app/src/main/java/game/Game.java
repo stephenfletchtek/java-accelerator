@@ -13,8 +13,7 @@ public class Game {
    
   public String getWordToGuess(String word) {
     StringBuilder stringBuilder = new StringBuilder(word);
-    int max = stringBuilder.length();
-    for (int i = 1; i < max; i++) {
+    for (int i = 1; i < word.length(); i++) {
       stringBuilder.replace(i, i + 1, "_");
     }
     return stringBuilder.toString();
