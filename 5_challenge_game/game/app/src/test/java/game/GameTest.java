@@ -14,6 +14,6 @@ public class GameTest {
   @Test
   public void testGetRemainingAttempts() {
     Game game = new Game("MAKERS");
-    assertEquals(game.getRemainingAttempts(), 10);
+    assertEquals(game.getRemainingAttempts(), Integer.valueOf(10));
   }
 }

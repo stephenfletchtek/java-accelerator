@@ -2,7 +2,7 @@ package game;
 
 public class Game { 
   StringBuilder stringBuilder;
-  int remainingAttempts;
+  Integer remainingAttempts;
 
   Game(String word) {
     this.stringBuilder = new StringBuilder(word);
@@ -17,7 +17,7 @@ public class Game {
     return this.stringBuilder.toString();
   }
 
-  public int getRemainingAttempts() {
+  public Integer getRemainingAttempts() {
     return this.remainingAttempts;
   }
 }
