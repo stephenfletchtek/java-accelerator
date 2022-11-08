@@ -16,4 +16,10 @@ public class GameTest {
     Game game = new Game("MAKERS");
     assertEquals(game.getRemainingAttempts(), Integer.valueOf(10));
   }
+
+  @Test
+  public void getRandomWordFromDictionary() {
+    Game game = new Game("MAKERS");
+    assertEquals(game.getRandomWordFromDictionary(), "MAKERS");
+  }
 }

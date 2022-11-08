@@ -1,8 +1,13 @@
 package game;
 
+import java.util.List;
+import java.util.Collections;
+import java.util.Arrays;
+
 public class Game { 
   StringBuilder stringBuilder;
   Integer remainingAttempts;
+  static final String[] DICTIONARY = { "MAKERS", "CANDIES", "DEVELOPER", "LONDON" };
 
   Game(String word) {
     this.stringBuilder = new StringBuilder(word);
@@ -19,5 +24,9 @@ public class Game {
 
   public Integer getRemainingAttempts() {
     return this.remainingAttempts;
+  }
+
+  public String getRandomWordFromDictionary() {
+    return DICTIONARY[0];
   }
 }
