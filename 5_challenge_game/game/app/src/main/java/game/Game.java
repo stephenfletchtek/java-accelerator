@@ -1,14 +1,12 @@
 package game;
 
-import java.util.Random;
-
 public class Game {
-  String word;
+
   Integer remainingAttempts = 10;
-  static final String[] DICTIONARY = new String [] { "MAKERS", "CANDIES", "DEVELOPER", "LONDON" };
- 
-  public Game() {
-    word = getRandomWordFromDictionary();
+  WordChooser wordChooser;
+
+  public Game(WordChooser chooser) {
+    wordChooser = chooser;
   }
    
   public String getWordToGuess(String word) {
@@ -24,7 +22,6 @@ public class Game {
   }
 
   public String getRandomWordFromDictionary() {
-    Random rand = new Random();
-    return DICTIONARY[(rand.nextInt(DICTIONARY.length - 1))];
+    return wordChooser.getRandomWordFromDictionary();
   }
 }
