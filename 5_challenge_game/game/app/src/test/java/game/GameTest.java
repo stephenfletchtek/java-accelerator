@@ -1,6 +1,8 @@
 package game;
 
-import static org.junit.Assert.assertEquals;
+import java.util.ArrayList;
+
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.Test;
@@ -19,5 +21,20 @@ public class GameTest {
     WordChooser mockWordChooser = mock(WordChooser.class);
     Game game = new Game(mockWordChooser);
     assertEquals(game.getRemainingAttempts(), Integer.valueOf(10));
+  }
+
+  @Test
+  public void testGuessLetter() {
+    WordChooser mockWordChooser = mock(WordChooser.class);
+    when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
+    Game game = new Game(mockWordChooser);
+    assertTrue(game.guessLetter('M'));
+    assertTrue(game.guessLetter('A'));
+    assertFalse(game.guessLetter('B'));
+    ArrayList<Character> result = new ArrayList<Character>();
+    result.add('M');
+    result.add('A');
+    assertEquals(game.guessed, result);
+    assertEquals(game.getRemainingAttempts(), Integer.valueOf(9));
   }
 }
