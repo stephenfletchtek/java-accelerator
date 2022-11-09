@@ -12,4 +12,8 @@ public class ShoppingList {
   public void addItem(String item) {
     shoppingList.add(item);
   }
+
+  public ArrayList<String> getItems() {
+    return shoppingList;
+  }
 }
