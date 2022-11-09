@@ -3,13 +3,13 @@ package game;
 public class Game {
 
   Integer remainingAttempts = 10;
-  WordChooser wordChooser;
+  String word;
 
   public Game(WordChooser chooser) {
-    wordChooser = chooser;
+    word = chooser.getRandomWordFromDictionary();
   }
    
-  public String getWordToGuess(String word) {
+  public String getWordToGuess() {
     StringBuilder stringBuilder = new StringBuilder(word);
     for (int i = 1; i < word.length(); i++) {
       stringBuilder.replace(i, i + 1, "_");
@@ -19,9 +19,5 @@ public class Game {
 
   public Integer getRemainingAttempts() {
     return remainingAttempts;
-  }
-
-  public String getRandomWordFromDictionary() {
-    return wordChooser.getRandomWordFromDictionary();
   }
 }

@@ -1,13 +1,15 @@
 package game;
 
-import static org.junit.Assert.assertEquals;
-
+import java.util.Arrays;
 import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
 
 public class WordChooserTest {
   @Test
   public void getRandomWordFromDictionary() {
     WordChooser wordChooser = new WordChooser();
-    assertEquals(wordChooser.getRandomWordFromDictionary(), "MAKERS");
+    String[] TEST_DICT = { "MAKERS", "CANDIES", "DEVELOPER", "LONDON" };
+    assertTrue(Arrays.asList(TEST_DICT).contains(wordChooser.getRandomWordFromDictionary()));
   }
 }
