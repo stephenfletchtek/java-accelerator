@@ -8,12 +8,12 @@ import static org.junit.Assert.*;
 
 public class ShoppingListTest {
   ShoppingList shoppingList;
-  ArrayList<String> testList;
+  ArrayList<ShoppingItem> testList;
 
   @Before
   public void initialize() {
     shoppingList = new ShoppingList();
-    testList = new ArrayList<String>();
+    testList = new ArrayList<ShoppingItem>();
   }
 
   @Test
@@ -23,15 +23,17 @@ public class ShoppingListTest {
 
   @Test
   public void addItem() {
-    shoppingList.addItem("Beans");
-    testList.add("Beans");
-    assertEquals(shoppingList.shoppingList, testList);
+    shoppingList.addItem(new ShoppingItem("Falafels", 3.20));
+    shoppingList.addItem(new ShoppingItem("Houmous", 2.45));
+    assertEquals(shoppingList.shoppingList.size(), 2);
   }
 
   @Test
   public void getItems() {
-    shoppingList.addItem("Beans");
-    testList.add("Beans");
+    testList.add(new ShoppingItem("Falafels", 3.20));
+    testList.add(new ShoppingItem("Houmous", 2.45));
+    shoppingList.addItem(testList.get(0));
+    shoppingList.addItem(testList.get(1));
     assertEquals(shoppingList.getItems(), testList);
   }      
 }
