@@ -9,4 +9,7 @@ public class ShoppingList {
     shoppingList = new ArrayList<String>();
   }
 
+  public void addItem(String item) {
+    shoppingList.add(item);
+  }
 }
