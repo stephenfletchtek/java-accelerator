@@ -1,6 +1,7 @@
 package game;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 import org.junit.Test;
 
@@ -19,7 +20,9 @@ public class GameTest {
 
   @Test
   public void getRandomWordFromDictionary() {
-    Game game = new Game(new WordChooser());
+    WordChooser mockWordChooser = mock(WordChooser.class);
+    when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
+    Game game = new Game(mockWordChooser);
     assertEquals(game.getRandomWordFromDictionary(), "MAKERS");
   }
 }
