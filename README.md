@@ -1,14 +1,12 @@
-# Makers Java accelerator course
+# Java accelerator
 
-## First program
+A Makers Academy course covering java fundamentals - details are [here](https://github.com/makersacademy/java-fundamentals)
 
-* Make the class
-* Type ```javac Hello.java``` to compile
-* Type ```java Hello``` to run
+## Compile and run from terminal
 
+### Compile then run
+* Type ```javac <filename>.java``` to compile
+* Type ```java <filename>``` to run compiled code
 
-## Second program
-
-* Make the class
-* Can type ```javac Calculator.java``` followed by ```java Calculator``` or
-* ```java Calculator.java``` in one line
+### Compile and run in one step
+* Type ```java <filename>.java``` in one line
