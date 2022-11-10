@@ -3,13 +3,12 @@ package game;
 import java.util.ArrayList;
 
 public class Game {
-  Integer remainingAttempts = 10;
-  String word;
-  ArrayList<Character> guessed;
+  private Integer remainingAttempts = 10;
+  private String word;
+  private ArrayList<Character> guessed = new ArrayList<Character>();
 
   public Game(WordChooser chooser) {
     word = chooser.getRandomWordFromDictionary();
-    guessed = new ArrayList<Character>();
   }
    
   public String getWordToGuess() {
@@ -24,12 +23,16 @@ public class Game {
     return remainingAttempts;
   }
 
-  public boolean guessLetter(Character chr) {
+  public Boolean guessLetter(Character chr) {
     if (word.indexOf(chr) == -1) { 
       remainingAttempts --;
       return false;
     }
     guessed.add(chr);
     return true;
+  }
+
+  public ArrayList<Character> getGuessed() {
+    return guessed;
   }
 }

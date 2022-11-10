@@ -5,36 +5,40 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class GameTest {
+  WordChooser mockWordChooser = mock(WordChooser.class);
+  Game game;
+  ArrayList<Character> result;
+
+  @Before
+  public void initialize() {
+    when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
+    game = new Game(mockWordChooser);
+    result = new ArrayList<Character>();
+  }
+
   @Test
   public void testGetWordToGuess() {
-    WordChooser mockWordChooser = mock(WordChooser.class);
-    when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
-    Game game = new Game(mockWordChooser);
     assertEquals(game.getWordToGuess(), "M_____");
   }
 
   @Test
-  public void testGetRemainingAttempts() {
-    WordChooser mockWordChooser = mock(WordChooser.class);
-    Game game = new Game(mockWordChooser);
+  public void testRightLetters() {
+    assertTrue(game.guessLetter('M'));
+    assertTrue(game.guessLetter('A'));
+    result.add('M');
+    result.add('A');
+    assertEquals(game.getGuessed(), result);
     assertEquals(game.getRemainingAttempts(), Integer.valueOf(10));
   }
 
   @Test
-  public void testGuessLetter() {
-    WordChooser mockWordChooser = mock(WordChooser.class);
-    when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
-    Game game = new Game(mockWordChooser);
-    assertTrue(game.guessLetter('M'));
-    assertTrue(game.guessLetter('A'));
+  public void guessWrongLetter() {
     assertFalse(game.guessLetter('B'));
-    ArrayList<Character> result = new ArrayList<Character>();
-    result.add('M');
-    result.add('A');
-    assertEquals(game.guessed, result);
+    assertEquals(game.getGuessed(), result);
     assertEquals(game.getRemainingAttempts(), Integer.valueOf(9));
   }
 }
