@@ -26,8 +26,15 @@ public class GameTest {
   }
 
   @Test
-  public void testRightLetters() {
+  public void testGetWordToGuessWithAttempt() {
+    game.guessLetter('K');
+    assertEquals(game.getWordToGuess(), "M_K___");
+  }
+
+  @Test
+  public void guessRightLetters() {
     assertTrue(game.guessLetter('M'));
+    assertTrue(game.guessLetter('A'));
     assertTrue(game.guessLetter('A'));
     result.add('M');
     result.add('A');

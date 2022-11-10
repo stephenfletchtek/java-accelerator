@@ -14,7 +14,9 @@ public class Game {
   public String getWordToGuess() {
     StringBuilder stringBuilder = new StringBuilder(word);
     for (int i = 1; i < word.length(); i++) {
-      stringBuilder.replace(i, i + 1, "_");
+      if (guessed.indexOf(word.charAt(i)) == -1) {
+        stringBuilder.replace(i, i + 1, "_");
+      }
     }
     return stringBuilder.toString();
   }
@@ -28,7 +30,9 @@ public class Game {
       remainingAttempts --;
       return false;
     }
-    guessed.add(chr);
+    if (guessed.indexOf(chr) == -1) {
+      guessed.add(chr);
+    }
     return true;
   }
 
