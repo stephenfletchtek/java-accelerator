@@ -18,13 +18,14 @@ public class App {
 
         System.out.println(app.getGreeting());
         System.out.println(game.getWordToGuess());
-
-        Character myGuess;
         
         while (game.getRemainingAttempts() > 0) {
             app.guessPrompt();
-            myGuess = scanner.nextLine().charAt(0);
-            app.guessLetter(myGuess);
+            String userInput = scanner.nextLine();
+            if (userInput != "") {
+                Character myGuess = userInput.charAt(0);
+                app.guessLetter(myGuess);
+            }
         }
     }
 
