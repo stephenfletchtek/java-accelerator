@@ -5,23 +5,30 @@ import java.util.Scanner;
 
 public class App {
     static ArrayList<Game> games = new ArrayList<Game>();
-    static ArrayList<String> players = new ArrayList<String>();
-    static Scanner scanner;
+    static Scanner scanner = new Scanner(System.in);
    
-    public App(WordChooser chooser, Masker masker) {
-        games.add(new Game(chooser, masker));
-        games.add(new Game(chooser, masker));
-        players.add("Player 1");
-        players.add("Player 2");
-        scanner = new Scanner(System.in);
+    public App(WordChooser chooser, Masker masker, String[] playerNames) {
+        for (int i = 0; i < playerNames.length; i++) {
+            games.add(new Game(chooser, masker, playerNames[i]));
+        }
     }
 
     public static void main(String[] args) {
-        App app = new App(new WordChooser(), new Masker());
+        String[] playerNames = new String[2];
+        for (int i = 0; i < 2; i++ ){
+            System.out.printf("Enter a name for player %d\n", i + 1);
+            playerNames[i] = (scanner.nextLine());
+        }
+
+        App app = new App(new WordChooser(), new Masker(), playerNames);
 
         Integer nextToPlay = (int)(Math.random() * 2);
         System.out.println(app.displayGreeting(nextToPlay));
 
+        app.gameLoop(app, nextToPlay);
+    }
+
+    private void gameLoop(App app, Integer nextToPlay) {
         while (app.notLostOrWon()) {
             app.guessPrompt(nextToPlay);
             String userInput = scanner.nextLine();
@@ -37,9 +44,8 @@ public class App {
         String output = "Welcome! Today the word to guess is:\n";
 
         for (int i = 0; i < games.size(); i++) {
-            String player = players.get(nextToPlay);
-            String word = games.get(nextToPlay).getWordToGuess();
-            output = output + player + ": " + word + "\n";
+            Game game = games.get(nextToPlay);
+            output = output + game.getPlayerName() + ": " + game.getWordToGuess() + "\n";
             nextToPlay = setNextToPlay(nextToPlay);
         }
         return output;
@@ -55,7 +61,7 @@ public class App {
     }
 
     private void guessPrompt(Integer nextToPlay) {
-        String player = players.get(nextToPlay);
+        String player = games.get(nextToPlay).getPlayerName();
         Integer attempts = games.get(nextToPlay).getRemainingAttempts();
         System.out.printf("\n%s: Enter one letter to guess (%d attempts remaining):\n", player, attempts);
     }

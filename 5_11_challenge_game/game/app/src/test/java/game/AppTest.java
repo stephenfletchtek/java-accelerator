@@ -15,7 +15,8 @@ public class AppTest {
     public void initialize() {
         mockWordChooser = mock(WordChooser.class);
         mockMasker = mock(Masker.class);
-        app = new App(mockWordChooser, mockMasker);
+
+        app = new App(mockWordChooser, mockMasker, new String[] {"", ""});
     }
 
     @Test

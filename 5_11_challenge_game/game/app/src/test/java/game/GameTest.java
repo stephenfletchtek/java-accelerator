@@ -17,7 +17,7 @@ public class GameTest {
   @Before
   public void initialize() {
     when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
-    game = new Game(mockWordChooser, mockMasker);
+    game = new Game(mockWordChooser, mockMasker, "Player1");
     result = new ArrayList<Character>();
   }
 
@@ -83,7 +83,7 @@ public class GameTest {
   @Test
   public void doWinGameRepeatLetters() {
     when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("AAB");
-    game = new Game(mockWordChooser, new Masker());
+    game = new Game(mockWordChooser, new Masker(), "Player1");
     game.guessLetter('A');
     game.guessLetter('B');
     assertTrue("Game is won", game.isGameWon());

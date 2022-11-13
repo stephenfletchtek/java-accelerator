@@ -7,10 +7,12 @@ public class Game {
   private Masker masker;
   private String word;
   private ArrayList<Character> guessed = new ArrayList<Character>();
+  private String playerName;
   
-  public Game(WordChooser chooser, Masker masker) {
+  public Game(WordChooser chooser, Masker masker, String playerName) {
     word = chooser.getRandomWordFromDictionary();
     this.masker = masker;
+    this.playerName = playerName;
   }
    
   public String getWordToGuess() {
@@ -50,5 +52,9 @@ public class Game {
           }
       }
       return true;
+  }
+
+  public String getPlayerName() {
+    return playerName;
   }
 }
