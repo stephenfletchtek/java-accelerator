@@ -4,21 +4,17 @@ import java.util.ArrayList;
 
 public class Game {
   private Integer remainingAttempts = 10;
+  private Masker masker;
   private String word;
   private ArrayList<Character> guessed = new ArrayList<Character>();
 
-  public Game(WordChooser chooser) {
+  public Game(WordChooser chooser, Masker masker) {
     word = chooser.getRandomWordFromDictionary();
+    this.masker = masker;
   }
    
   public String getWordToGuess() {
-    StringBuilder stringBuilder = new StringBuilder(word);
-    for (int i = 1; i < word.length(); i++) {
-      if (guessed.indexOf(word.charAt(i)) == -1) {
-        stringBuilder.replace(i, i + 1, "_");
-      }
-    }
-    return stringBuilder.toString();
+    return masker.getMaskedWord(word, guessed);
   }
 
   public Integer getRemainingAttempts() {

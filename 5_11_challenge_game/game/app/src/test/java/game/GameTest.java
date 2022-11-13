@@ -9,24 +9,28 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class GameTest {
-  WordChooser mockWordChooser = mock(WordChooser.class);
-  Game game;
-  ArrayList<Character> result;
+  private Masker mockMasker = mock(Masker.class);
+  private WordChooser mockWordChooser = mock(WordChooser.class);
+  private Game game;
+  private ArrayList<Character> result;
 
   @Before
   public void initialize() {
     when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
-    game = new Game(mockWordChooser);
+    game = new Game(mockWordChooser, mockMasker);
     result = new ArrayList<Character>();
   }
 
   @Test
   public void testGetWordToGuess() {
+    when(mockMasker.getMaskedWord("MAKERS", result)).thenReturn("M_____");
     assertEquals(game.getWordToGuess(), "M_____");
   }
 
   @Test
   public void testGetWordToGuessWithAttempt() {
+    when(mockMasker.getMaskedWord("MAKERS", result)).thenReturn("M_K___");
+    result.add('K');
     game.guessLetter('K');
     assertEquals(game.getWordToGuess(), "M_K___");
   }
@@ -79,7 +83,7 @@ public class GameTest {
   @Test
   public void doWinGameRepeatLetters() {
     when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("AAB");
-    game = new Game(mockWordChooser);
+    game = new Game(mockWordChooser, new Masker());
     game.guessLetter('A');
     game.guessLetter('B');
     assertTrue("Game is won", game.isGameWon());

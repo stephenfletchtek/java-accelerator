@@ -7,14 +7,15 @@ import static org.mockito.Mockito.*;
 import org.junit.Before;
 
 public class AppTest {
-    App app;
-    WordChooser mockWordChooser;
+    private App app;
+    private WordChooser mockWordChooser;
+    private Masker mockMasker;
 
     @Before
     public void initialize() {
         mockWordChooser = mock(WordChooser.class);
-        when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
-        app = new App(mockWordChooser);
+        mockMasker = mock(Masker.class);
+        app = new App(mockWordChooser, mockMasker);
     }
 
     @Test
