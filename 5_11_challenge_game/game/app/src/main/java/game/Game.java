@@ -7,7 +7,7 @@ public class Game {
   private Masker masker;
   private String word;
   private ArrayList<Character> guessed = new ArrayList<Character>();
-
+  
   public Game(WordChooser chooser, Masker masker) {
     word = chooser.getRandomWordFromDictionary();
     this.masker = masker;
