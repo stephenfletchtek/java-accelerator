@@ -7,8 +7,33 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class AppTest {
-    @Test public void appHasAGreeting() {
+    @Test
+    public void appHasAGreeting() {
         App classUnderTest = new App();
         assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+    }
+
+    @Test
+    public void dontLoseGame() {
+        App app = new App();
+        assertFalse("Game is not lost", app.isGameLost());
+    }
+
+    @Test
+    public void doLoseGame() {
+        App app = new App();
+        app.guessLetter('z');
+        app.guessLetter('z');
+        app.guessLetter('z');
+        app.guessLetter('z');
+        app.guessLetter('z');
+        app.guessLetter('z');
+        app.guessLetter('z');
+        app.guessLetter('z');
+        app.guessLetter('z');
+        app.guessLetter('z');
+        app.guessLetter('z');
+        app.guessLetter('z');
+        assertTrue("Game is lost", app.isGameLost());
     }
 }
