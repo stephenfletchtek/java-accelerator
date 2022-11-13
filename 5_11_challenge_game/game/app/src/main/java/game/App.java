@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -49,7 +50,12 @@ public class App {
     }
 
     public Boolean isGameWon() {
-        return false;
+        for (int i = 0; i < game.getWordToGuess().length(); i++) {
+            if (game.getGuessed().indexOf(game.getWordToGuess().charAt(i)) == -1) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void guessPrompt() {
