@@ -42,6 +42,9 @@ public class App {
     }
 
     public Boolean isGameLost() {
+        if (game.getRemainingAttempts() < 1) {
+            return true;
+        }
         return false;
     }
 

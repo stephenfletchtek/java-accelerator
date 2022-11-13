@@ -22,18 +22,9 @@ public class AppTest {
     @Test
     public void doLoseGame() {
         App app = new App();
-        app.guessLetter('z');
-        app.guessLetter('z');
-        app.guessLetter('z');
-        app.guessLetter('z');
-        app.guessLetter('z');
-        app.guessLetter('z');
-        app.guessLetter('z');
-        app.guessLetter('z');
-        app.guessLetter('z');
-        app.guessLetter('z');
-        app.guessLetter('z');
-        app.guessLetter('z');
+        for (int i = 0; i < 10; i++) {
+            app.guessLetter('z');
+        }
         assertTrue("Game is lost", app.isGameLost());
     }
 }
