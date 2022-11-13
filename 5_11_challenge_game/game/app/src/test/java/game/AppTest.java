@@ -8,10 +8,11 @@ import org.junit.Before;
 
 public class AppTest {
     App app;
+    WordChooser mockWordChooser;
 
     @Before
     public void initialize() {
-        WordChooser mockWordChooser = mock(WordChooser.class);
+        mockWordChooser = mock(WordChooser.class);
         when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
         app = new App(mockWordChooser);
     }
@@ -41,12 +42,10 @@ public class AppTest {
 
     @Test
     public void doWinGame() {
-        app.guessLetter('M');
-        app.guessLetter('A');
-        app.guessLetter('K');
-        app.guessLetter('E');
-        app.guessLetter('R');
-        app.guessLetter('S');
+        String word = mockWordChooser.getRandomWordFromDictionary();
+        for (int i = 0; i < word.length() ; i++) {
+            app.guessLetter(word.charAt(i));
+        }
         assertTrue("Game is won", app.isGameWon());
     }
 }
