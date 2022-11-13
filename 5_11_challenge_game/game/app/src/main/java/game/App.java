@@ -20,12 +20,8 @@ public class App {
     public static void main(String[] args) {
         app = new App(new WordChooser(), new Masker());
 
-        System.out.println(app.getGreeting());
-
         Integer nextToPlay = (int)(Math.random() * 2);
-        for (int i = 0; i < 2; i++) {
-            nextToPlay = app.displayWordToGuess(nextToPlay);
-        }
+        System.out.println(app.displayGreeting(nextToPlay));
 
         while (app.notLostOrWon()) {
             app.guessPrompt(nextToPlay);
@@ -38,8 +34,18 @@ public class App {
         }
     }
 
-    public String getGreeting() {
-        return "Welcome! Today the word to guess is:";
+    public String displayGreeting(Integer nextToPlay) {
+        String output = "Welcome! Today the word to guess is:\n";
+        String player;
+        String word;
+
+        for (int i = 0; i < games.size(); i++) {
+            player = players.get(nextToPlay);
+            word = games.get(nextToPlay).getWordToGuess();
+            output = output + player + ": " + word + "\n";
+            nextToPlay = setNextToPlay(nextToPlay);
+        }
+        return output;
     }
 
     private void guessLetter(Integer nextToPlay, Character chr) {
@@ -57,21 +63,6 @@ public class App {
         System.out.printf("\n%s: Enter one letter to guess (%d attempts remaining):\n", player, attempts);
     }
 
-    private Integer setNextToPlay(Integer current) {
-        if (current == 1) {
-            return 0;
-        } else {
-            return 1;
-        }
-    }
-
-    private Integer displayWordToGuess(Integer nextToPlay) {
-        String player = players.get(nextToPlay);
-        String word = games.get(nextToPlay).getWordToGuess();
-        System.out.printf("%s: %s\n", player, word);
-        return app.setNextToPlay(nextToPlay);
-    }
-
     private Boolean notLostOrWon() {
         for (int i = 0; i < games.size(); i++) {
             if (games.get(i).isGameLost()) {
@@ -84,5 +75,13 @@ public class App {
             }
         }
         return true;
+    }
+
+    private Integer setNextToPlay(Integer current) {
+        if (current == 1) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 }

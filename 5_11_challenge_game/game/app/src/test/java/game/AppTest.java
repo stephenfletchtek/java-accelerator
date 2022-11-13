@@ -20,6 +20,6 @@ public class AppTest {
 
     @Test
     public void appHasAGreeting() {
-        assertNotNull("app should have a greeting", app.getGreeting());
+        assertNotNull("app should have a greeting", app.displayGreeting(0));
     }
 }
