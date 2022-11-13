@@ -41,21 +41,7 @@ public class App {
         System.out.println(game.getWordToGuess());
     }
 
-    public Boolean isGameLost() {
-        if (game.getRemainingAttempts() < 1) {
-            return true;
-        }
-        return false;
-    }
-
-    public Boolean isGameWon() {
-        for (int i = 0; i < game.getWordToGuess().length(); i++) {
-            if (game.getGuessed().indexOf(game.getWordToGuess().charAt(i)) == -1) {
-                return false;
-            }
-        }
-        return true;
-    }
+    
 
     private void guessPrompt() {
         String msg = "Enter one letter to guess (" + game.getRemainingAttempts() + " attempts remaining):";

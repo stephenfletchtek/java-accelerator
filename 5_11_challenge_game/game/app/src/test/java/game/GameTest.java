@@ -48,4 +48,40 @@ public class GameTest {
     assertEquals(game.getGuessed(), result);
     assertEquals(game.getRemainingAttempts(), Integer.valueOf(9));
   }
+
+  @Test
+  public void dontLoseGame() {
+      assertFalse("Game is not lost", game.isGameLost());
+  }
+
+  @Test
+  public void doLoseGame() {
+      for (int i = 0; i < 10; i++) {
+          game.guessLetter('Z');
+      }
+      assertTrue("Game is lost", game.isGameLost());
+  }
+
+  @Test
+  public void dontWinGame() {
+      assertFalse("Game is not won", game.isGameWon());
+  }
+
+  @Test
+  public void doWinGame() {
+      String word = mockWordChooser.getRandomWordFromDictionary();
+      for (int i = 0; i < word.length() ; i++) {
+          game.guessLetter(word.charAt(i));
+      }
+      assertTrue("Game is won", game.isGameWon());
+  }
+
+  @Test
+  public void doWinGameRepeatLetters() {
+    when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("AAB");
+    game = new Game(mockWordChooser);
+    game.guessLetter('A');
+    game.guessLetter('B');
+    assertTrue("Game is won", game.isGameWon());
+  }
 }

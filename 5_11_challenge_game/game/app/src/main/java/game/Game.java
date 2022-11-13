@@ -39,4 +39,20 @@ public class Game {
   public ArrayList<Character> getGuessed() {
     return guessed;
   }
+
+  public Boolean isGameLost() {
+    if (remainingAttempts < 1) {
+        return true;
+    }
+    return false;
+  }
+
+  public Boolean isGameWon() {
+      for (int i = 0; i < word.length(); i++) {
+          if (guessed.indexOf(word.charAt(i)) == -1) {
+              return false;
+          }
+      }
+      return true;
+  }
 }
