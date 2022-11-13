@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
-    static App app;
     static ArrayList<Game> games = new ArrayList<Game>();
     static ArrayList<String> players = new ArrayList<String>();
     static Scanner scanner;
@@ -18,7 +17,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        app = new App(new WordChooser(), new Masker());
+        App app = new App(new WordChooser(), new Masker());
 
         Integer nextToPlay = (int)(Math.random() * 2);
         System.out.println(app.displayGreeting(nextToPlay));
@@ -36,12 +35,10 @@ public class App {
 
     public String displayGreeting(Integer nextToPlay) {
         String output = "Welcome! Today the word to guess is:\n";
-        String player;
-        String word;
 
         for (int i = 0; i < games.size(); i++) {
-            player = players.get(nextToPlay);
-            word = games.get(nextToPlay).getWordToGuess();
+            String player = players.get(nextToPlay);
+            String word = games.get(nextToPlay).getWordToGuess();
             output = output + player + ": " + word + "\n";
             nextToPlay = setNextToPlay(nextToPlay);
         }
@@ -78,10 +75,6 @@ public class App {
     }
 
     private Integer setNextToPlay(Integer current) {
-        if (current == 1) {
-            return 0;
-        } else {
-            return 1;
-        }
+        return Math.abs(current - 1);
     }
 }
