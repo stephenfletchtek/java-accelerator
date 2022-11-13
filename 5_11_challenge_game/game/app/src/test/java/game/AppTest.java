@@ -5,32 +5,40 @@ package game;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
+import org.junit.Before;
 
 public class AppTest {
+    App app;
+
+    @Before
+    public void initialize() {
+        WordChooser mockWordChooser = mock(WordChooser.class);
+        when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
+        app = new App(mockWordChooser);
+    }
+
     @Test
     public void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+        assertNotNull("app should have a greeting", app.getGreeting());
     }
 
     @Test
     public void dontLoseGame() {
-        App app = new App();
         assertFalse("Game is not lost", app.isGameLost());
     }
 
     @Test
     public void doLoseGame() {
-        App app = new App();
         for (int i = 0; i < 10; i++) {
-            app.guessLetter('z');
+            app.guessLetter('Z');
         }
         assertTrue("Game is lost", app.isGameLost());
     }
 
     @Test
     public void dontWinGame() {
-        App app = new App();
         assertFalse("Game is not won", app.isGameWon());
     }
 }

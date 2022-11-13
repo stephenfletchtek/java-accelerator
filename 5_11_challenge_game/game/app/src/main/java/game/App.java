@@ -7,13 +7,13 @@ public class App {
     static Game game;
     static Scanner scanner;
 
-    public App() {
-        game = new Game(new WordChooser());
+    public App(WordChooser chooser) {
+        game = new Game(chooser);
         scanner = new Scanner(System.in);
     }
 
     public static void main(String[] args) {
-        app = new App();
+        app = new App(new WordChooser());
 
         System.out.println(app.getGreeting());
         System.out.println(game.getWordToGuess());
