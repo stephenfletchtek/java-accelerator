@@ -48,6 +48,10 @@ public class App {
         return false;
     }
 
+    public Boolean isGameWon() {
+        return false;
+    }
+
     private void guessPrompt() {
         String msg = "Enter one letter to guess (" + game.getRemainingAttempts() + " attempts remaining):";
         System.out.println(msg);

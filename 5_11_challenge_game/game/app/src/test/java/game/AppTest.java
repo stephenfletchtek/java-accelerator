@@ -27,4 +27,10 @@ public class AppTest {
         }
         assertTrue("Game is lost", app.isGameLost());
     }
+
+    @Test
+    public void dontWinGame() {
+        App app = new App();
+        assertFalse("Game is not won", app.isGameWon());
+    }
 }
