@@ -70,7 +70,7 @@ public class GameTest {
   @Test
   public void doWinGame() {
       String word = mockWordChooser.getRandomWordFromDictionary();
-      for (int i = 0; i < word.length() ; i++) {
+      for (int i = 1; i < word.length() ; i++) {
           game.guessLetter(word.charAt(i));
       }
       assertTrue("Game is won", game.isGameWon());

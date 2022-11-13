@@ -18,7 +18,7 @@ public class App {
         System.out.println(app.getGreeting());
         System.out.println(game.getWordToGuess());
         
-        while (game.getRemainingAttempts() > 0) {
+        while (!game.isGameLost() && !game.isGameWon()) {
             app.guessPrompt();
             String userInput = scanner.nextLine();
             if (userInput != "") {
@@ -32,19 +32,27 @@ public class App {
         return "Welcome! Today the word to guess is:";
     }
 
-    public void guessLetter(Character chr) {
+    private void guessLetter(Character chr) {
         if (game.guessLetter(chr)) {
             System.out.println("Right!");
         } else {
             System.out.println("Wrong...");
         }
         System.out.println(game.getWordToGuess());
+        app.winLose();
     }
-
-    
 
     private void guessPrompt() {
         String msg = "Enter one letter to guess (" + game.getRemainingAttempts() + " attempts remaining):";
         System.out.println(msg);
+    }
+
+    private void winLose() {
+        if (game.isGameLost()) {
+            System.out.println("You Lose!");
+        }
+        if (game.isGameWon()) {
+            System.out.println("You Win!");
+        }
     }
 }

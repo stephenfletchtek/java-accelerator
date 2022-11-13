@@ -48,7 +48,7 @@ public class Game {
   }
 
   public Boolean isGameWon() {
-      for (int i = 0; i < word.length(); i++) {
+      for (int i = 1; i < word.length(); i++) {
           if (guessed.indexOf(word.charAt(i)) == -1) {
               return false;
           }
