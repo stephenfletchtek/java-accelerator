@@ -6,7 +6,7 @@ public class Masker {
     public String getMaskedWord(String word, ArrayList<Character> guessed) {
         StringBuilder stringBuilder = new StringBuilder(word);
         for (int i = 1; i < word.length(); i++) {
-            if (guessed.indexOf(word.charAt(i)) == -1) {
+            if (!guessed.contains(word.charAt(i))) {
                 stringBuilder.replace(i, i + 1, "_");
             }
         }

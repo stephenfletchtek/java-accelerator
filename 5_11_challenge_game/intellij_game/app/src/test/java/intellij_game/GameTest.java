@@ -9,8 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class GameTest {
-    private Masker mockMasker = mock(Masker.class);
-    private WordChooser mockWordChooser = mock(WordChooser.class);
+    private final Masker mockMasker = mock(Masker.class);
+    private final WordChooser mockWordChooser = mock(WordChooser.class);
     private Game game;
     private ArrayList<Character> result;
 
@@ -18,7 +18,7 @@ public class GameTest {
     public void initialize () {
         when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
         game = new Game(mockWordChooser, mockMasker, "");
-        result = new ArrayList<Character>();
+        result = new ArrayList<>();
     }
 
     @Test

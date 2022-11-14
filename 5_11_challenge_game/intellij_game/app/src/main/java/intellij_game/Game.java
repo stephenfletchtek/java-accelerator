@@ -6,7 +6,7 @@ public class Game {
     private Integer remainingAttempts = 10;
     private final Masker masker;
     private final String word;
-    private final ArrayList<Character> guessed = new ArrayList<Character>();
+    private final ArrayList<Character> guessed = new ArrayList<>();
     private final String playerName;
     public Game(WordChooser chooser, Masker masker, String playerName) {
         word = chooser.getRandomWordFromDictionary();

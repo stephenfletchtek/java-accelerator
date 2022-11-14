@@ -13,7 +13,7 @@ public class MaskerTest {
     @Before
     public void initialize() {
         masker = new Masker();
-        guessed = new ArrayList<Character>();
+        guessed = new ArrayList<>();
     }
 
     @Test
