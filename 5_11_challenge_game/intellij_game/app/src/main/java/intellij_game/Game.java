@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Game {
     private Integer remainingAttempts = 10;
-    private Masker masker;
-    private String word;
-    private ArrayList<Character> guessed = new ArrayList<Character>();
-    private String playerName;
+    private final Masker masker;
+    private final String word;
+    private final ArrayList<Character> guessed = new ArrayList<Character>();
+    private final String playerName;
     public Game(WordChooser chooser, Masker masker, String playerName) {
         word = chooser.getRandomWordFromDictionary();
         this.masker = masker;
@@ -23,22 +23,19 @@ public class Game {
             remainingAttempts --;
             return false;
         }
-        if (guessed.indexOf(chr) == -1) {
+        if (!guessed.contains(chr)) {
             guessed.add(chr);
         }
         return true;
     }
 
     public Boolean isGameLost() {
-        if (remainingAttempts < 1) {
-            return true;
-        }
-        return false;
+        return remainingAttempts < 1;
     }
 
     public Boolean isGameWon() {
         for (int i = 1; i < word.length(); i++) {
-            if (guessed.indexOf(word.charAt(i)) == -1) {
+            if (!guessed.contains(word.charAt(i))) {
                 return false;
             }
         }
@@ -51,5 +48,9 @@ public class Game {
 
     public Integer getRemainingAttempts() {
         return remainingAttempts;
+    }
+
+    public String getPlayerName() {
+        return playerName;
     }
 }
