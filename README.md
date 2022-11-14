@@ -1,4 +1,4 @@
-# Java accelerator
+# Java fundamentals
 
 A Makers Academy course covering java fundamentals - details are [here](https://github.com/makersacademy/java-fundamentals)
 
