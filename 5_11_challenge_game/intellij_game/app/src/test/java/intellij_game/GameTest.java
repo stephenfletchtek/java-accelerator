@@ -75,4 +75,13 @@ public class GameTest {
         }
         assertTrue("Game is won", game.isGameWon());
     }
+
+    @Test
+    public void doWinGameRepeatLetters() {
+        when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("AAB");
+        game = new Game(mockWordChooser, new Masker(), "");
+        game.guessLetter('A');
+        game.guessLetter('B');
+        assertTrue("Game is won", game.isGameWon());
+    }
 }
