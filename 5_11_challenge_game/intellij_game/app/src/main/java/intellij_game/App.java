@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class App {
+    static byte numPlayers = 2;
     static ArrayList<Game> games = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
 
@@ -14,8 +15,8 @@ public class App {
         }
     }
     public static void main(String[] args) {
-        String[] playerNames = new String[2];
-        for (int i = 0; i < 2; i++) {
+        String[] playerNames = new String[numPlayers];
+        for (int i = 0; i < numPlayers; i++) {
             System.out.printf("Enter a name for player %d\n", i + 1);
             playerNames[i] = scanner.nextLine();
         }
@@ -30,11 +31,11 @@ public class App {
 
     private void gameLoop(App app, Integer nextToPlay) {
         while(app.notLostOrWon()) {
-            app.guessPrompt(nextToPlay);
+            app.guessPrompt(games.get(nextToPlay));
             String userInput = scanner.nextLine();
             if (!Objects.equals(userInput, "")) {
                 Character myGuess = userInput.charAt(0);
-                app.guessLetter(nextToPlay, myGuess);
+                app.guessLetter(games.get(nextToPlay), myGuess);
             }
             nextToPlay = app.setNextToPlay(nextToPlay);
         }
@@ -53,18 +54,18 @@ public class App {
         return output.toString();
     }
 
-    private void guessLetter(Integer nextToPlay, Character chr) {
-        if (games.get(nextToPlay).guessLetter(chr)) {
+    private void guessLetter(Game game, Character chr) {
+        if (game.guessLetter(chr)) {
             System.out.println("Right!");
         } else {
             System.out.println("Wrong...");
         }
-        System.out.println(games.get(nextToPlay).getWordToGuess());
+        System.out.println(game.getWordToGuess());
     }
 
-    private void guessPrompt(Integer nextToPlay) {
-        String player = games.get(nextToPlay).getPlayerName();
-        Integer attempts = games.get(nextToPlay).getRemainingAttempts();
+    private void guessPrompt(Game game) {
+        String player = game.getPlayerName();
+        Integer attempts = game.getRemainingAttempts();
         System.out.printf("\n%s: Enter one letter to guess (%d attempts remaining):\n", player, attempts);
     }
     private Boolean notLostOrWon() {
