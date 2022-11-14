@@ -34,4 +34,22 @@ public class GameTest {
         game.guessLetter('K');
         assertEquals(game.getWordToGuess(),"M_K___");
     }
+
+    @Test
+    public void guessRightLetters() {
+        assertTrue(game.guessLetter('M'));
+        assertTrue(game.guessLetter('A'));
+        assertTrue(game.guessLetter('A'));
+        result.add('M');
+        result.add('A');
+        assertEquals(game.getGuessed(), result);
+        assertEquals(game.getRemainingAttempts(), Integer.valueOf(10));
+    }
+
+    @Test
+    public void guessWrongLetter() {
+        assertFalse(game.guessLetter('B'));
+        assertEquals(game.getGuessed(), result);
+        assertEquals(game.getRemainingAttempts(), Integer.valueOf(9));
+    }
 }
